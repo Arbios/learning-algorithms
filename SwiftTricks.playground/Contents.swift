@@ -122,7 +122,7 @@ public struct Queue {
 
 
 
-// 3 HackerRank 2 task
+// 3 HackerRank - Task 2
 
 
 var alice = [5,3,2]
@@ -154,5 +154,23 @@ func whoWin(a: [Int], b: [Int]) -> [Int] {
 
 
 whoWin(a: alice, b: bob)
+
+
+// 4 HackerRank  - Task 3 - Very big sum
+
+// Complete the aVeryBigSum function below.
+func aVeryBigSum(ar: [Int]) -> String {
+  var sum: Int64 = 0
+  
+  for i in ar {
+    sum = sum + Int64(i)
+  }
+  
+  
+  
+  return String(sum)
+}
+
+aVeryBigSum(ar: [1000000001, 1000000002, 1000000003, 1000000004, 1000000005])
 
 
