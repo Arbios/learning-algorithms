@@ -178,73 +178,84 @@ aVeryBigSum(ar: [1000000001, 1000000002, 1000000003, 1000000004, 1000000005])
 
 
 
-
-
-
-
-
-
-
-// Binary
-enum BinaryTree<T> {
-case empty
-indirect case node(BinaryTree, T, BinaryTree)
-}
-
-extension BinaryTree: CustomStringConvertible {
-  var description: String {
-    switch self {
-      case let .node(left, value, right):
-      return "value: \(value), left = [" + left.description + "], right = [" + right.description + "]"
-      case .empty:
-      return ""
+class Human {
+  var weight: Int
+  var age: Int
+  
+  init(weight: Int, age: Int) {
+    self.weight = weight
+    self.age = age
   }
   
-  case empty
-  indirect case node(BinaryTree, T, BinaryTree)
+  convenience init(age: Int) {
+    self.init(weight: 0, age: age)
+  }
+  
+  convenience init(weight: Int) {
+    self.init(weight: weight, age: 0)
+  }
+
+  convenience init() {
+    self.init(weight: 0)
+  }
+  
+  func test() {
+    
+  }
 }
 
+let h1 = Human(weight: 70, age: 25)
+let h2 = Human(weight: 0, age: 25)
+let h3 = Human()
 
-// leaf nodes
-let node5 = BinaryTree.node(.empty, "5", .empty)
-let nodeA = BinaryTree.node(.empty, "a", .empty)
-let node10 = BinaryTree.node(.empty, "10", .empty)
-let node4 = BinaryTree.node(.empty, "4", .empty)
-let node3 = BinaryTree.node(.empty, "3", .empty)
-let nodeB = BinaryTree.node(.empty, "b", .empty)
-
-// intermediate nodes on the left
-let Aminus10 = BinaryTree.node(nodeA, "-", node10)
-let timesLeft = BinaryTree.node(node5, "*", Aminus10)
-
-// intermediate nodes on the right
-let minus4 = BinaryTree.node(.empty, "-", node4)
-let divide3andB = BinaryTree.node(node3, "/", nodeB)
-let timesRight = BinaryTree.node(minus4, "*", divide3andB)
-
-// root node
-let tree = BinaryTree.node(timesLeft, "+", timesRight)
-
-
-
-
-
-
-
+class Student: Human {
+  var firstName: String
+  var lastName: String
+  
+  init(firstName: String, lastName: String) {
+    self.firstName = firstName
+    self.lastName = lastName
+    super.init(weight: 0, age: 0)
+    self.weight = 50
+    test()
+  }
+  
+  convenience init(firstName: String) {
+    self.init(firstName: firstName, lastName: "")
+    self.age = 20
+    test()
+  }
+  
+}
+let student = Student(firstName: "a")
+student.age = 2
 
 
 
+// 6 HackerRank - Task 4 - Diagonal difference
 
 
+var matrixArrays = [[8, 14, 12], [36, 11, 2], [-16, 29, 84]]
+var matrixLength = 3
+func diagonalDifference(arr: [[Int]]) -> Int {
 
-
-
-
-
-
-
-
-
-
-
+  var leftToRightSum: Int = 0
+  var rightToLeftSum: Int = 0
+  var positionR = 2
+  var positionL = 0
+  for array in arr {
+    rightToLeftSum += array[positionR]
+    print(rightToLeftSum)
+    positionR -= 1
+  }
+  for array in arr {
+    leftToRightSum += array[positionL]
+    print(leftToRightSum)
+    positionL += 1
+  }
+  
+  
+  return abs(leftToRightSum - rightToLeftSum) 
+}
+print("Sum is: \(diagonalDifference(arr: matrixArrays))")
 
