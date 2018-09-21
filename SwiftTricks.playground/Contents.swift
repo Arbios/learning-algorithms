@@ -174,3 +174,77 @@ func aVeryBigSum(ar: [Int]) -> String {
 aVeryBigSum(ar: [1000000001, 1000000002, 1000000003, 1000000004, 1000000005])
 
 
+// 5 Skutarenko Inheritance Task - Cars
+
+
+
+
+
+
+
+
+
+
+// Binary
+enum BinaryTree<T> {
+case empty
+indirect case node(BinaryTree, T, BinaryTree)
+}
+
+extension BinaryTree: CustomStringConvertible {
+  var description: String {
+    switch self {
+      case let .node(left, value, right):
+      return "value: \(value), left = [" + left.description + "], right = [" + right.description + "]"
+      case .empty:
+      return ""
+  }
+  
+  case empty
+  indirect case node(BinaryTree, T, BinaryTree)
+}
+
+
+// leaf nodes
+let node5 = BinaryTree.node(.empty, "5", .empty)
+let nodeA = BinaryTree.node(.empty, "a", .empty)
+let node10 = BinaryTree.node(.empty, "10", .empty)
+let node4 = BinaryTree.node(.empty, "4", .empty)
+let node3 = BinaryTree.node(.empty, "3", .empty)
+let nodeB = BinaryTree.node(.empty, "b", .empty)
+
+// intermediate nodes on the left
+let Aminus10 = BinaryTree.node(nodeA, "-", node10)
+let timesLeft = BinaryTree.node(node5, "*", Aminus10)
+
+// intermediate nodes on the right
+let minus4 = BinaryTree.node(.empty, "-", node4)
+let divide3andB = BinaryTree.node(node3, "/", nodeB)
+let timesRight = BinaryTree.node(minus4, "*", divide3andB)
+
+// root node
+let tree = BinaryTree.node(timesLeft, "+", timesRight)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
